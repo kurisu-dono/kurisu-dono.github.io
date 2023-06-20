@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake News Detection</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noticia+Text:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="bgnavbar">
+        <div class="navbar">
+            <a href="#" class="nav">About Us</a>
+            <a href="#" class="nav"></a>
+            <a href="#" class="nav"></a>
+            <a href="#" class="nav"></a>
+        </div>
+    </div>
+    <div class="wrapper">
+        <h1>Filipino Fake News Detector</h1>
+
+        <form action="{{ url_for('predict')}}" method="POST">
+            <div class="paper">
+                <div class="paper-content">  
+                    <textarea autofocus  name="message" style="font-size: 18pt"></textarea>
+                </div>
+            </div>
+
+            <div>
+                <input type="file" class="button-30" id="imgs"></input>
+            <br><br>
+            <button class="button-30" type="submit">PREDICT</button>
+            </div>
+            
+
+            <div class="results">
+                <p>{% if prediction == [0]%}</p>
+        <h2>Fake News</h2>
+        <p>{% elif prediction == [1]%}</p>
+    
+        <h2 class="real""><b>Real News</b></h2>
+        <p>{% endif %}</p>
+            </div>
+        </form>
+        
+    </div>
+</body>
+</html>
